@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <CFLL.maxefficency.label>Maximum lost part efficency: {0}%</CFLL.maxefficency.label>
+  <CFLL.maxefficency.description>A missing bodypart (and its inherited parts) will have a maximum of this amount of efficency instead of the default 0</CFLL.maxefficency.description>
+  <CFLL.recoverytime.label>Recovery time: {0} days</CFLL.recoverytime.label>
+  <CFLL.recoverytime.description>The efficency will take this amount of days to reach the maximum defined above</CFLL.recoverytime.description>
+  <CFLL.version.label>Installed mod-version: {0}</CFLL.version.label>
+</LanguageData>

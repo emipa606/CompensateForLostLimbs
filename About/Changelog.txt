@@ -1,0 +1,4 @@
+# Changelog for CompensateForLostLimbs
+
+1.3.0 - First publish
+
