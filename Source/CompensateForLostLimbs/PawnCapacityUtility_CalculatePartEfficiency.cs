@@ -25,16 +25,35 @@ public class PawnCapacityUtility_CalculatePartEfficiency
         if (CompensateForLostLimbs.CachedMissingLimbs.ContainsKey(partHash))
         {
             __result = CompensateForLostLimbs.CachedMissingLimbs[partHash];
+
             return;
         }
 
-        if (part.depth != BodyPartDepth.Outside)
+        var lostLimb = diffSet.hediffs.Where(hediff =>
         {
-            CompensateForLostLimbs.CachedMissingLimbs[partHash] = 0;
-            return;
-        }
+            if (hediff is not Hediff_MissingPart)
+            {
+                return false;
+            }
 
-        var lostLimb = diffSet.hediffs.Where(hediff => hediff.Part == part);
+            if (part == hediff.Part)
+            {
+                return true;
+            }
+
+            var parent = part.parent;
+            while (!parent.IsCorePart)
+            {
+                if (parent == hediff.Part)
+                {
+                    return true;
+                }
+
+                parent = parent.parent;
+            }
+
+            return false;
+        });
 
         if (!lostLimb.Any())
         {
