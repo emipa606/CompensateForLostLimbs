@@ -42,7 +42,7 @@ public class PawnCapacityUtility_CalculatePartEfficiency
             }
 
             var parent = part.parent;
-            while (!parent.IsCorePart)
+            while (parent is { IsCorePart: false })
             {
                 if (parent == hediff.Part)
                 {
