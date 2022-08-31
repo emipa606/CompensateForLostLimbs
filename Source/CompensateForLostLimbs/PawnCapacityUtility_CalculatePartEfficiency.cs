@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using HarmonyLib;
+using RimWorld;
 using Verse;
 
 namespace CompensateForLostLimbs;
@@ -21,11 +22,20 @@ public class PawnCapacityUtility_CalculatePartEfficiency
             return;
         }
 
+
         var partHash = $"{diffSet.pawn.GetHashCode()}|{part.GetHashCode()}";
         if (CompensateForLostLimbs.CachedMissingLimbs.ContainsKey(partHash))
         {
             __result = CompensateForLostLimbs.CachedMissingLimbs[partHash];
 
+            return;
+        }
+
+        if (CompensateForLostLimbs.bodyPartsToIgnoreForBlindsight.Contains(part.def) &&
+            diffSet.pawn.ideo?.Ideo.memes?.Contains(MemeDefOf.Blindsight) == true)
+        {
+            CompensateForLostLimbs.CachedMissingLimbs[partHash] = 0;
+            __result = CompensateForLostLimbs.CachedMissingLimbs[partHash];
             return;
         }
 

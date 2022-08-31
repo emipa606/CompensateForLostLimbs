@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using HarmonyLib;
+using RimWorld;
 using Verse;
 
 namespace CompensateForLostLimbs;
@@ -10,9 +12,20 @@ public static class CompensateForLostLimbs
 {
     private static Dictionary<string, float> cachedMissingLimbs;
     private static int lastQuery;
+    public static List<BodyPartDef> bodyPartsToIgnoreForBlindsight;
 
     static CompensateForLostLimbs()
     {
+        if (ModLister.IdeologyInstalled)
+        {
+            bodyPartsToIgnoreForBlindsight = DefDatabase<BodyPartDef>.AllDefsListForReading
+                .Where(def => def.tags.Contains(BodyPartTagDefOf.SightSource)).ToList();
+        }
+        else
+        {
+            bodyPartsToIgnoreForBlindsight = new List<BodyPartDef>();
+        }
+
         var harmony = new Harmony("Mlie.CompensateForLostLimbs");
         harmony.PatchAll(Assembly.GetExecutingAssembly());
     }
