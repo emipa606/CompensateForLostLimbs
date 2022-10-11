@@ -12,7 +12,7 @@ public static class CompensateForLostLimbs
 {
     private static Dictionary<string, float> cachedMissingLimbs;
     private static int lastQuery;
-    public static List<BodyPartDef> bodyPartsToIgnoreForBlindsight;
+    public static readonly List<BodyPartDef> bodyPartsToIgnoreForBlindsight;
 
     static CompensateForLostLimbs()
     {
