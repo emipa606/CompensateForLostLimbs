@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using HarmonyLib;
-using RimWorld;
 using Verse;
 
 namespace CompensateForLostLimbs;
@@ -32,7 +31,7 @@ public class PawnCapacityUtility_CalculatePartEfficiency
         }
 
         if (CompensateForLostLimbs.bodyPartsToIgnoreForBlindsight.Contains(part.def) &&
-            diffSet.pawn.ideo?.Ideo.memes?.Contains(MemeDefOf.Blindsight) == true)
+            diffSet.pawn.ideo?.Ideo.memes?.Any(def => def.defName == "Blindsight") == true)
         {
             CompensateForLostLimbs.CachedMissingLimbs[partHash] = 0;
             __result = CompensateForLostLimbs.CachedMissingLimbs[partHash];

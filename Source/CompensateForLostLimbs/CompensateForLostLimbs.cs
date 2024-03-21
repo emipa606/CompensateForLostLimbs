@@ -23,7 +23,7 @@ public static class CompensateForLostLimbs
         }
         else
         {
-            bodyPartsToIgnoreForBlindsight = new List<BodyPartDef>();
+            bodyPartsToIgnoreForBlindsight = [];
         }
 
         var harmony = new Harmony("Mlie.CompensateForLostLimbs");
