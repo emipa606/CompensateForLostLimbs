@@ -30,7 +30,7 @@ public class PawnCapacityUtility_CalculatePartEfficiency
             return;
         }
 
-        if (CompensateForLostLimbs.bodyPartsToIgnoreForBlindsight.Contains(part.def) &&
+        if (CompensateForLostLimbs.BodyPartsToIgnoreForBlindsight.Contains(part.def) &&
             diffSet.pawn.ideo?.Ideo.memes?.Any(def => def.defName == "Blindsight") == true)
         {
             CompensateForLostLimbs.CachedMissingLimbs[partHash] = 0;
@@ -62,7 +62,7 @@ public class PawnCapacityUtility_CalculatePartEfficiency
             }
 
             return false;
-        });
+        }).ToArray();
 
         if (!lostLimb.Any())
         {
@@ -71,7 +71,7 @@ public class PawnCapacityUtility_CalculatePartEfficiency
         }
 
         CompensateForLostLimbs.CachedMissingLimbs[partHash] =
-            CompensateForLostLimbs.GetEfficencyFromHediffAge(lostLimb.First().ageTicks);
+            CompensateForLostLimbs.GetEfficiencyFromHediffAge(lostLimb.First().ageTicks);
 
         __result = CompensateForLostLimbs.CachedMissingLimbs[partHash];
     }

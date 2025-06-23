@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
   <CFLL.maxefficency.label>Maximum lost part efficency: {0}%</CFLL.maxefficency.label>
   <CFLL.maxefficency.description>A missing bodypart (and its inherited parts) will have a maximum of this amount of efficency instead of the default 0</CFLL.maxefficency.description>

@@ -12,18 +12,18 @@ public static class CompensateForLostLimbs
 {
     private static Dictionary<string, float> cachedMissingLimbs;
     private static int lastQuery;
-    public static readonly List<BodyPartDef> bodyPartsToIgnoreForBlindsight;
+    public static readonly List<BodyPartDef> BodyPartsToIgnoreForBlindsight;
 
     static CompensateForLostLimbs()
     {
         if (ModLister.IdeologyInstalled)
         {
-            bodyPartsToIgnoreForBlindsight = DefDatabase<BodyPartDef>.AllDefsListForReading
+            BodyPartsToIgnoreForBlindsight = DefDatabase<BodyPartDef>.AllDefsListForReading
                 .Where(def => def.tags.Contains(BodyPartTagDefOf.SightSource)).ToList();
         }
         else
         {
-            bodyPartsToIgnoreForBlindsight = [];
+            BodyPartsToIgnoreForBlindsight = [];
         }
 
         var harmony = new Harmony("Mlie.CompensateForLostLimbs");
@@ -51,14 +51,14 @@ public static class CompensateForLostLimbs
         }
     }
 
-    public static float GetEfficencyFromHediffAge(int hediffAgeTicks)
+    public static float GetEfficiencyFromHediffAge(int hediffAgeTicks)
     {
-        if (hediffAgeTicks >= CompensateForLostLimbsMod.instance.Settings.RecoveryTime)
+        if (hediffAgeTicks >= CompensateForLostLimbsMod.Instance.Settings.RecoveryTime)
         {
-            return CompensateForLostLimbsMod.instance.Settings.MaxEfficency;
+            return CompensateForLostLimbsMod.Instance.Settings.MaxEfficiency;
         }
 
-        return CompensateForLostLimbsMod.instance.Settings.MaxEfficency *
-               (hediffAgeTicks / CompensateForLostLimbsMod.instance.Settings.RecoveryTime);
+        return CompensateForLostLimbsMod.Instance.Settings.MaxEfficiency *
+               (hediffAgeTicks / CompensateForLostLimbsMod.Instance.Settings.RecoveryTime);
     }
 }

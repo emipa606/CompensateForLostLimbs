@@ -1,0 +1,6 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Release" />
+  </Configurations>
+  <Project Path="CompensateForLostLimbs/CompensateForLostLimbs.csproj" />
+</Solution>
